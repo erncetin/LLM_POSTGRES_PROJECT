@@ -1,1 +1,1 @@
-LLM streamlit application with postgres server on Docker . 
+LLM streamlit application with postgres server on Docker. 
