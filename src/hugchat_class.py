@@ -14,8 +14,6 @@ class chatbot:
         sign = Login(EMAIL, PASWRD)
         cookies = sign.login(cookie_dir_path=cookie_path_dir, save_cookies=True)
         self.chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-        
-    
 
     # Returns available models for dropdown menu
     def llm_models(self):
@@ -30,3 +28,6 @@ class chatbot:
         self.chatbot.new_conversation(
             switch_to=True, modelIndex=model_index, system_prompt=prompt
         )
+    def chat_stream(self, response):
+        for token in response:
+            yield token["token"] if token is not None or "token" in token or token["token"] is not None else ""
