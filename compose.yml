@@ -25,13 +25,15 @@ services:
       depends_on:
         postgres:
           condition: service_healthy
-      volumes:
-        - ./src/deneme.py:/app/src/deneme.py
-        - ./src/postgres_login.py:/app/src/postgres_login.py
+      volumes:  
+        - ./src:/app/src
+      ports:
+        - 8501:8501
       command:
-        ["sh","-c", "python /app/src/deneme.py && python /app/src/postgres_login.py"]
+        ["sh", "-c", "python /app/src/postgres_login.py && streamlit run /app/src/streamlit_run.py"]
       environment:
-        user: root
-        password: root
-        host: postgres
+        - user=root
+        - password=root
+        - host=postgres
+        - PYTHONPATH=/app/src
       restart: "no"

@@ -8,4 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
+ENV PYTHONPATH=/app/src
+
 CMD ["sh", "-c", "python /app/src/postgres_login.py && streamlit run /app/src/streamlit_run.py"]

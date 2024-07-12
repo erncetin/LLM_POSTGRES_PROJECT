@@ -1,8 +1,9 @@
 import streamlit as st
-from src.hugchat_class import chatbot
-import time
+from hugchat_class import chatbot
+
 # st.session_state.messages.append = [{"role": "user", "content":"Our prompt"
 #                              "role": "asistant", "content":"The Response"}] gibi dictionary atayabilirsin
+st.set_page_config(page_title="LLM", layout="wide")
 
 SYSTEM_PROMPT = """     
     Your're TEXT to SQL helper. you will help the user to execute queries from sentences.
@@ -83,7 +84,3 @@ if prompt :=st.chat_input("Whats up ?"):
         stream = st.write_stream(st.session_state["hf_obj"].chat_stream(response))
     content = "".join(stream)
     st.session_state.messages.append({"role":"assistant","content":content})
-    
-
-
-

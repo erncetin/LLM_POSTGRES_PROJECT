@@ -1,5 +1,6 @@
 from hugchat import hugchat
 from hugchat.login import Login
+from hugchat.message import ChatError
 
 
 SYSTEM_PROMPT = """     
@@ -48,9 +49,11 @@ class chatbot:
             switch_to=True, modelIndex=model_index, system_prompt=prompt
         )
     def chat_stream(self, response):
-        for token in response:
-            if token:
-                yield token["token"]
-            else:
-                yield ""
-            
+        try:
+            for token in response:
+                if token:
+                    yield token["token"]
+                else:
+                    yield ""
+        except ChatError as e:
+            print(e)
