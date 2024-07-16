@@ -3,13 +3,17 @@ LLM streamlit application with postgres server on Docker.
 
 1- Purpose of the project:
     a-This project, converts the text to SQL queries
+    
     b-By writing /query ..... the ai will turn the text to query. You need to specify the table names and confirm then ai will give you the proper query.
+    
     c-You can execute the the query by pressing execute last querry button. Alternatively, you can login to postgres server and try the query yourself.
 
 
 2- To run:
     a-pull the project
+    
     b-write command "docker compose up --build"
+    
     c-open localhost/8501 on your web browser 
 
 Preferably, use meta-llama/Meta-Llama-3-70B for better results.
